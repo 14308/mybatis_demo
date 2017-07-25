@@ -1,0 +1,25 @@
+spring:
+#  jackson:
+#    date-format: yyyy-MM-dd HH:mm:ss
+  jackson:
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
+    date-format: com.fasterxml.jackson.databind.util.ISO8601DateFormat
+  datasource:
+    url: jdbc:mysql://localhost:3306/hap_cloud_test
+    username: hapdemo
+    password: handhand
+    driver-class-name: com.mysql.jdbc.Driver
+#spring.datasource.type=com.alibaba.druid.pool.DruidDataSource
+server:
+  port: 1111
+  context-path: /api
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-handlers-package: com.example.demo.mapper.typehandler
+management:
+  security:
+    enabled: false
+liquibase:
+  change-log: classpath:db/liquibase/master.xml
+
