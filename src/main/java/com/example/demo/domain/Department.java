@@ -5,12 +5,11 @@ import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.enums.FieldStrategy;
 import com.baomidou.mybatisplus.enums.IdType;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.time.ZonedDateTime;
-import java.util.Date;
 
 /**
  * Created by 陆小凤 on 2017/7/20.
@@ -24,7 +23,11 @@ import java.util.Date;
         "createdDate",
         "status"
 })
-public class Department {
+public class Department implements Serializable,keyToStringDome {
+
+    private static final long serialVersionUID=11l;
+
+
     @TableId(type = IdType.AUTO)
     private Long id;
     @TableField(value = "department_name",validate = FieldStrategy.NOT_NULL)
@@ -35,4 +38,24 @@ public class Department {
     private ZonedDateTime createdDate;
     @TableField(value = "departemtn_status",validate = FieldStrategy.NOT_NULL)
     private DepartmentStatus status;
+
+    public Department(Long id, String name, String code, DepartmentStatus status) {
+        this.id = id;
+        this.name = name;
+        this.code = code;
+        this.status = status;
+    }
+
+    public Department() {
+
+    }
+
+   /* @Override
+    public String toString() {
+        return "id=" + id;
+    }*/
+    @Override
+    public String keyToString() {
+        return "id="+id;
+    }
 }

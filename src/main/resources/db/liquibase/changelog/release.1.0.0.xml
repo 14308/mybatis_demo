@@ -56,6 +56,34 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
+
     </changeSet>
 
+    <changeSet id="20170802" author="jason.liu">
+
+        <createTable tableName="atl_role">
+            <column name="id" type="bigint">
+                <constraints
+                        nullable="false"
+                        primaryKey="true"
+                        primaryKeyName="atl_role_id"/>
+            </column>
+            <column name="role_name" type="varchar(255)">
+                <constraints nullable="false" unique="true" uniqueConstraintName="atl_role_unique"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="atl_user_roles">
+            <column name="user_id" type="bigint">
+                <constraints nullable="false"
+                             foreignKeyName="fk_atl_user_id"
+                             references="atl_user(id)"/>
+            </column>
+            <column name="role_id" type="bigint">
+                <constraints nullable="false"
+                             foreignKeyName="fk_atl_role_id"
+                             references="atl_role(id)"/>
+            </column>
+        </createTable>
+    </changeSet>
 </databaseChangeLog>

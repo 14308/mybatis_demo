@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.util.SecurityUtils;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,9 +16,9 @@ class DemoRestController {
         return "Hello " + SecurityUtils.getCurrentUser();
     }
 
+
     @GetMapping("/public/api")
     public String publicAPI() {
-        System.out.println("-------");
         return "this is public API";
     }
 }
