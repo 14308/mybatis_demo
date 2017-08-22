@@ -16,6 +16,6 @@ public class Role {
     @TableId(type = IdType.AUTO)
     private Long id;
 
-    @TableField(value = "role_name", validate = FieldStrategy.NOT_NULL)
+    @TableField(value = "role_name")
     private String name;
 }

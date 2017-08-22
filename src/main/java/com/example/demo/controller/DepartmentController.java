@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.plugins.Page;
 import com.example.demo.domain.Department;
 import com.example.demo.exception.ValidationException;
 import com.example.demo.service.DepartmentService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,12 +19,9 @@ import java.util.List;
 @RequestMapping("/departments")
 
 public class DepartmentController {
-    private final DepartmentService departmentService;
+    @Autowired
+    private  DepartmentService departmentService;
 
-
-    public DepartmentController(DepartmentService departmentService) {
-        this.departmentService = departmentService;
-    }
     //分页查询部门
     @GetMapping()
     public List<Department> getDepartments(int page,int size){

@@ -44,6 +44,14 @@ public class UserController {
 		return userService.selectByUnitId(id);
 	}
 
+	@GetMapping("/test")
+	public List<User> test(String name,String fullname){
+		User user = new User();
+		user.setUsername(name);
+		user.setFull_name(fullname);
+		return userService.tset(user);
+	}
+
 	@GetMapping("id")
 	public Long getId(Long idf){
 		return userService.getId(idf);

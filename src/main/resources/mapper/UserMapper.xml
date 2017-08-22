@@ -19,4 +19,14 @@
         departement_id =#{id}
     </select>
 
+    <select id = "test" parameterType="com.example.demo.domain.User" resultMap="BaseResultMap">
+        select
+        *
+        from atl_user user
+       <where>
+           <if test="username != null">
+              and user.NAME LIKE concat('%', concat(#{username}, '%'))
+           </if>
+       </where>
+    </select>
 </mapper>

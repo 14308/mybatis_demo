@@ -27,11 +27,11 @@ public class User implements Serializable,UserDetails {
     private static final long serialVersionUID=1l;
     @TableId(type = IdType.AUTO)
     private Long id;
-    @TableField(value = "name",validate = FieldStrategy.NOT_NULL)
+    @TableField(value = "name")
     private String username;
-    @TableField(value = "password",validate = FieldStrategy.NOT_NULL)
+    @TableField(value = "password")
     private String password;
-    @TableField(value = "departement_id",validate = FieldStrategy.NOT_NULL)
+    @TableField(value = "departement_id")
     private Long departement_id;
     @TableField(value = "full_name")
     private String full_name;

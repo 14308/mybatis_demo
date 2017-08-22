@@ -1,21 +1,13 @@
 package com.example.demo;
 
 
+import com.example.demo.annotation.AnnotationDemo;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import org.springframework.cache.annotation.EnableCaching;
-import org.springframework.context.annotation.Bean;
-
-import org.springframework.data.redis.connection.RedisConnectionFactory;
-import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
-import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 
 //@SpringBootApplication(exclude = {SecurityAutoConfiguration.class })
@@ -25,6 +17,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 public class MybatisDemoApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(MybatisDemoApplication.class, args);
 	}
 

@@ -30,13 +30,13 @@ public class Department implements Serializable,keyToStringDome {
 
     @TableId(type = IdType.AUTO)
     private Long id;
-    @TableField(value = "department_name",validate = FieldStrategy.NOT_NULL)
+    @TableField(value = "department_name")
     private String name;
     private String code;
-    @TableField(value = "createdDate",validate = FieldStrategy.NOT_NULL)
+    @TableField(value = "createdDate")
 //    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ssz", timezone = "GMT+8")
     private ZonedDateTime createdDate;
-    @TableField(value = "departemtn_status",validate = FieldStrategy.NOT_NULL)
+    @TableField(value = "departemtn_status")
     private DepartmentStatus status;
 
     public Department(Long id, String name, String code, DepartmentStatus status) {

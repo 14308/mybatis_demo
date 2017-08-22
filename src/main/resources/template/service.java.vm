@@ -1,0 +1,19 @@
+package ${package.Service};
+
+##import ${package.Entity}.${entity};
+import com.example.demo.domain.*;
+import com.example.demo.mapper.*;
+import org.springframework.stereotype.Service;
+##import ${superServiceClassPackage};
+
+/**
+ * @author ${author} on ${date}
+ */
+@Service
+public class ${table.serviceName} extends BaseService<${table.mapperName},${entity}> {
+    private final ${table.mapperName} ${table.mapperName.toLowerCase()};
+
+    ${table.controllerName}(${table.mapperName} ${table.mapperName.toLowerCase()}){
+        this.${table.mapperName.toLowerCase()} = ${table.mapperName.toLowerCase()};
+    }
+}

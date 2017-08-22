@@ -20,12 +20,6 @@
         user.id = #{id}
     </select>
 
-    <select id="search" parameterType="java.lang.String" resultMap="BaseResultMap">
-      SELECT
-      *
-      from atl_department
-      where
-      department_name like CONCAT(CONCAT('%', #{keyword}), '%');
-    </select>
+
 
 </mapper>

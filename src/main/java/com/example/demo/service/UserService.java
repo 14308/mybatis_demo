@@ -53,4 +53,8 @@ public class UserService extends BaseService<UserMapper,User>{
     public Long getId(Long idf){
         return idf;
     }
+
+    public List<User> tset(User user){
+        return userMapper.test(user);
+    }
 }

@@ -5,8 +5,8 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.fasterxml.jackson.datatype.jsr310.ser.ZonedDateTimeSerializer;
+//import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+//import com.fasterxml.jackson.datatype.jsr310.ser.ZonedDateTimeSerializer;
 import org.springframework.boot.autoconfigure.data.redis.RedisProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cache.CacheManager;
@@ -64,10 +64,10 @@ public class CacheConfig {
 		objectMapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
 		objectMapper.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
         objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
-        JavaTimeModule timeModule = new JavaTimeModule();
+   /*     JavaTimeModule timeModule = new JavaTimeModule();
         timeModule.addSerializer(ZonedDateTime.class, new ZonedDateTimeSerializer(DateTimeFormatter.ISO_OFFSET_DATE_TIME));
         objectMapper.registerModule(timeModule);
-        objectMapper.setTimeZone(TimeZone.getDefault());
+        objectMapper.setTimeZone(TimeZone.getDefault());*/
 
 		jackson2JsonRedisSerializer.setObjectMapper(objectMapper);
 
@@ -93,8 +93,8 @@ public class CacheConfig {
 		};
 	}
 
-    @Bean(value = "keyGenerator1")
-    public KeyGenerator keyGenerator1() {
+    @Bean(value = "keyGenerator2")
+    public KeyGenerator keyGenerator3() {
 	    //jdk 1.8新特性，只有一个实现方法时不关心方法名
         //这里相当于@Override
         //public Object generate(Object o, Method method, Object... objects) ｛xxx｝

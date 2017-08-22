@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.AtlUserMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.example.demo.entity.AtlUser">
+		<id column="id" property="id" />
+		<result column="departement_id" property="departementId" />
+		<result column="name" property="name" />
+		<result column="password" property="password" />
+		<result column="full_name" property="fullName" />
+	</resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, departement_id AS departementId, name, password, full_name AS fullName
+    </sql>
+
+</mapper>

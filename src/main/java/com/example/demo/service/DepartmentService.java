@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
+import com.example.demo.annotation.AnnotationDemo;
 import com.example.demo.domain.Department;
 import com.example.demo.mapper.DepartmentMapper;
 import org.springframework.cache.annotation.CacheConfig;
@@ -17,6 +18,7 @@ import java.util.List;
  */
 @Service
 @CacheConfig(cacheNames = {"Department"})
+
 public class DepartmentService extends BaseService<DepartmentMapper,Department>{
 
     private final DepartmentMapper departmentMapper;
@@ -46,7 +48,8 @@ public class DepartmentService extends BaseService<DepartmentMapper,Department>{
         return list;
     }
 //    @CachePut(key = "'com.example.demo.domain.Department'+#department.id")
-    @CachePut(key="'DepartmentID='+#department.id+'DepartmentName='+#department.name")
+//    @CachePut(key="'DepartmentID='+#department.id+'DepartmentName='+#department.name")
+    @CachePut(keyGenerator = "keyGenerator2")
     public Department create(Department department){
         System.out.println("CachePut");
         departmentMapper.insert(department);

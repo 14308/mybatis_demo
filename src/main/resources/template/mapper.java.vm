@@ -1,0 +1,11 @@
+package ${package.Mapper};
+
+import com.example.demo.domain.*;
+import ${superMapperClassPackage};
+
+/**
+ * @author ${author} on ${date}
+ */
+public interface ${table.mapperName} extends ${superMapperClass}<${entity}> {
+
+}

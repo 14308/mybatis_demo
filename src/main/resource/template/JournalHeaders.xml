@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.JournalHeadersMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.example.demo.entity.JournalHeaders">
+		<id column="id" property="id" />
+		<result column="company_id" property="companyId" />
+		<result column="operation_unit_id" property="operationUnitId" />
+		<result column="organisation_id" property="organisationId" />
+		<result column="structure_id" property="structureId" />
+		<result column="journal_number" property="journalNumber" />
+		<result column="period_year" property="periodYear" />
+		<result column="period_quarter" property="periodQuarter" />
+		<result column="period_name" property="periodName" />
+		<result column="DESCRIPTION" property="description" />
+		<result column="scenario_id" property="scenarioId" />
+		<result column="version_id" property="versionId" />
+		<result column="status" property="status" />
+		<result column="reversed_flag" property="reversedFlag" />
+		<result column="source_budget_header_id" property="sourceBudgetHeaderId" />
+		<result column="source_type" property="sourceType" />
+		<result column="journal_type_id" property="journalTypeId" />
+		<result column="employee_id" property="employeeId" />
+		<result column="position_id" property="positionId" />
+		<result column="unit_id" property="unitId" />
+		<result column="is_enabled" property="isEnabled" />
+		<result column="is_deleted" property="isDeleted" />
+		<result column="created_date" property="createdDate" />
+		<result column="created_by" property="createdBy" />
+		<result column="last_updated_date" property="lastUpdatedDate" />
+		<result column="last_updated_by" property="lastUpdatedBy" />
+	</resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, company_id AS companyId, operation_unit_id AS operationUnitId, organisation_id AS organisationId, structure_id AS structureId, journal_number AS journalNumber, period_year AS periodYear, period_quarter AS periodQuarter, period_name AS periodName, DESCRIPTION AS description, scenario_id AS scenarioId, version_id AS versionId, status, reversed_flag AS reversedFlag, source_budget_header_id AS sourceBudgetHeaderId, source_type AS sourceType, journal_type_id AS journalTypeId, employee_id AS employeeId, position_id AS positionId, unit_id AS unitId, is_enabled AS isEnabled, is_deleted AS isDeleted, created_date AS createdDate, created_by AS createdBy, last_updated_date AS lastUpdatedDate, last_updated_by AS lastUpdatedBy
+    </sql>
+
+</mapper>
