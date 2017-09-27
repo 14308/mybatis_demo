@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.StructureMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.example.demo.entity.Structure">
+		<id column="id" property="id" />
+		<result column="organization_id" property="organizationId" />
+		<result column="structure_code" property="structureCode" />
+		<result column="structure_name" property="structureName" />
+		<result column="period_set_code" property="periodSetCode" />
+		<result column="period_strategy" property="periodStrategy" />
+		<result column="description" property="description" />
+		<result column="is_enabled" property="isEnabled" />
+		<result column="is_deleted" property="isDeleted" />
+		<result column="version_number" property="versionNumber" />
+		<result column="created_date" property="createdDate" />
+		<result column="created_by" property="createdBy" />
+		<result column="last_updated_date" property="lastUpdatedDate" />
+		<result column="last_updated_by" property="lastUpdatedBy" />
+	</resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, organization_id AS organizationId, structure_code AS structureCode, structure_name AS structureName, period_set_code AS periodSetCode, period_strategy AS periodStrategy, description, is_enabled AS isEnabled, is_deleted AS isDeleted, version_number AS versionNumber, created_date AS createdDate, created_by AS createdBy, last_updated_date AS lastUpdatedDate, last_updated_by AS lastUpdatedBy
+    </sql>
+
+</mapper>

@@ -1,9 +1,23 @@
-package ${package.Service};
+package
+
+    ${package.Service};
 
 ##import ${package.Entity}.${entity};
-import com.example.demo.domain.*;
-import com.example.demo.mapper.*;
+import com.cloudhelios.atlantis.budget.domain.*;
+import com.cloudhelios.atlantis.budget.persistence.*;
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.baomidou.mybatisplus.plugins.pagination.PageHelper;
+import com.helioscloud.atlantis.exception.core.IdNotNullInCreateActionException;
+import com.helioscloud.atlantis.exception.core.ValidationError;
+import com.helioscloud.atlantis.exception.core.ValidationException;
+import com.helioscloud.atlantis.service.BaseService;
+import org.apache.commons.lang3.RandomStringUtils;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.time.ZonedDateTime;
+import java.util.List;
 ##import ${superServiceClassPackage};
 
 /**
@@ -11,9 +25,74 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class ${table.serviceName} extends BaseService<${table.mapperName},${entity}> {
-    private final ${table.mapperName} ${table.mapperName.toLowerCase()};
+    
+    private final ${table.mapperName} ${table.mapperName.substring(0,1).toLowerCase()}${table.mapperName.substring(1,${table.mapperName.length()})};
 
-    ${table.controllerName}(${table.mapperName} ${table.mapperName.toLowerCase()}){
-        this.${table.mapperName.toLowerCase()} = ${table.mapperName.toLowerCase()};
+    ${table.serviceName}(${table.mapperName} ${table.mapperName.substring(0,1).toLowerCase()}${table.mapperName.substring(1,${table.mapperName.length()})}){
+        this.${table.mapperName.substring(0,1).toLowerCase()}${table.mapperName.substring(1,${table.mapperName.length()})} = ${table.mapperName.substring(0,1).toLowerCase()}${table.mapperName.substring(1,${table.mapperName.length()})};
+    }
+
+    public ${entity} create${entity}(${entity} ${entity.substring(0,1).toLowerCase()}${entity.substring(1,${entity.length()})}){
+        if (${entity.substring(0,1).toLowerCase()}${entity.substring(1,${entity.length()})}.getId() != null) {
+        throw new IdNotNullInCreateActionException();
+        }
+        try {
+        ${entity.substring(0,1).toLowerCase()}${entity.substring(1,${entity.length()})}.setLastUpdatedDate(ZonedDateTime.now());
+        ${entity.substring(0,1).toLowerCase()}${entity.substring(1,${entity.length()})}.setCreatedDate(ZonedDateTime.now());
+        ${entity.substring(0,1).toLowerCase()}${entity.substring(1,${entity.length()})}.setIsEnabled(true);
+        ${entity.substring(0,1).toLowerCase()}${entity.substring(1,${entity.length()})}.setIsDeleted(false);
+        ${entity.substring(0,1).toLowerCase()}${entity.substring(1,${entity.length()})}.setLastUpdatedBy(100l);
+        ${entity.substring(0,1).toLowerCase()}${entity.substring(1,${entity.length()})}.setVersionNumber(1l);
+        ${entity.substring(0,1).toLowerCase()}${entity.substring(1,${entity.length()})}.setCreatedBy(100l);
+        ${entity.substring(0,1).toLowerCase()}${entity.substring(1,${entity.length()})}Mapper.insert(${entity.substring(0,1).toLowerCase()}${entity.substring(1,${entity.length()})});
+        return ${entity.substring(0,1).toLowerCase()}${entity.substring(1,${entity.length()})};
+        } catch (DuplicateKeyException e) {
+        throw new ValidationException(new ValidationError("code", "not.unique"));
+        }
+    }
+
+    @Transactional
+    public List<${entity}> create${entity}Batch(List<${entity}> ${entity.substring(0,1).toLowerCase()}${entity.substring(1,${entity.length()})}s){
+        for (${entity} ${entity.substring(0,1).toLowerCase()}${entity.substring(1,${entity.length()})} : ${entity.substring(0,1).toLowerCase()}${entity.substring(1,${entity.length()})}s) {
+        create${entity}(${entity.substring(0,1).toLowerCase()}${entity.substring(1,${entity.length()})});
+        }
+        return ${entity.substring(0,1).toLowerCase()}${entity.substring(1,${entity.length()})}s;
+    }
+
+    public ${entity} update${entity}(${entity} ${entity.substring(0,1).toLowerCase()}${entity.substring(1,${entity.length()})}){
+        if (${entity.substring(0,1).toLowerCase()}${entity.substring(1,${entity.length()})}.getId() == null) {
+        throw new ValidationException(new ValidationError("id", "id不能为空"));
+        }
+        ${entity.substring(0,1).toLowerCase()}${entity.substring(1,${entity.length()})}Mapper.updateById(${entity.substring(0,1).toLowerCase()}${entity.substring(1,${entity.length()})});
+        return ${entity.substring(0,1).toLowerCase()}${entity.substring(1,${entity.length()})};
+    }
+
+    @Transactional
+    public List<${entity}> update${entity}Batch(List<${entity}> ${entity.substring(0,1).toLowerCase()}${entity.substring(1,${entity.length()})}s){
+        for (${entity} ${entity.substring(0,1).toLowerCase()}${entity.substring(1,${entity.length()})} : ${entity.substring(0,1).toLowerCase()}${entity.substring(1,${entity.length()})}s) {
+        update${entity}(${entity.substring(0,1).toLowerCase()}${entity.substring(1,${entity.length()})});
+        }
+        return ${entity.substring(0,1).toLowerCase()}${entity.substring(1,${entity.length()})}s;
+    }
+
+    public void delete${entity}(Long id){
+
+    }
+
+    @Transactional
+    public void delete${entity}Batch(List<${entity}> ${entity.substring(0,1).toLowerCase()}${entity.substring(1,${entity.length()})}s){
+
+    }
+
+    public List<${entity}> get${entity}ByCond(
+        Boolean isEnabled,
+        int page,
+        int size) {
+        PageHelper.startPage(page, size);
+        return ${entity.substring(0,1).toLowerCase()}${entity.substring(1,${entity.length()})}Mapper.selectList(new EntityWrapper<${entity}>()
+        .where("is_deleted = false")
+        .eq(isEnabled != null, "is_enabled", isEnabled)
+        .orderBy("id")
+        );
     }
 }

@@ -2,11 +2,20 @@ package ${package.Controller};
 
 
 import org.springframework.web.bind.annotation.*;
-import com.example.demo.domain.*;
-import com.example.demo.service.*;
+import com.cloudhelios.atlantis.budget.domain.*;
+import com.cloudhelios.atlantis.budget.service.*;
+import com.cloudhelios.atlantis.budget.utils.PageUtil;
+import com.helioscloud.atlantis.util.PaginationUtil;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import com.baomidou.mybatisplus.plugins.Page;
+import com.baomidou.mybatisplus.plugins.pagination.PageHelper;
+
+import java.net.URISyntaxException;
+import java.util.List;
 
 #if(${restControllerStyle})
-import org.springframework.web.bind.annotation.RestController;
 #else
 import org.springframework.stereotype.Controller;
 #end
@@ -17,11 +26,7 @@ import ${superControllerClassPackage};
 /**
  * @author ${author} on ${date}
  */
-#if(${restControllerStyle})
 @RestController
-#else
-@Controller
-#end
 @RequestMapping("#if(${package.ModuleName})/${package.ModuleName}#end/#if(${controllerMappingHyphenStyle})${controllerMappingHyphen}#else${table.entityPath}#end")
 #if(${superControllerClass})
 public class ${table.controllerName} extends ${superControllerClass} {
@@ -29,43 +34,57 @@ public class ${table.controllerName} extends ${superControllerClass} {
 public class ${table.controllerName} {
 #end
 
-    private final ${table.serviceName} ${table.serviceName.toLowerCase()};
+    private final ${table.serviceName} ${table.serviceName.substring(0,1).toLowerCase()}${table.serviceName.substring(1,${table.serviceName.length()})};
 
-    ${table.controllerName}(${table.serviceName} ${table.serviceName.toLowerCase()}){
-        this.${table.serviceName.toLowerCase()} = ${table.serviceName.toLowerCase()};
+    ${table.controllerName}(${table.serviceName} ${table.serviceName.substring(0,1).toLowerCase()}${table.serviceName.substring(1,${table.serviceName.length()})}){
+        this.${table.serviceName.substring(0,1).toLowerCase()}${table.serviceName.substring(1,${table.serviceName.length()})} = ${table.serviceName.substring(0,1).toLowerCase()}${table.serviceName.substring(1,${table.serviceName.length()})};
     }
 
     @PostMapping()
-    public ResponseEntity<${entity}> create${entity}(@RequestBody ${entity} ${entity.toLowerCase()}){
-        return ResponseEntity.ok();
+    public ResponseEntity<${entity}> create${entity}(@RequestBody ${entity} ${entity.substring(0,1).toLowerCase()}${entity.substring(1,${entity.length()})}){
+        return ResponseEntity.ok(${table.serviceName.substring(0,1).toLowerCase()}${table.serviceName.substring(1,${table.serviceName.length()})}.create${entity}(${entity.substring(0,1).toLowerCase()}${entity.substring(1,${entity.length()})}));
     }
 
     @PostMapping("/batch")
-    public ResponseEntity<List<${entity}>> create${entity}Batch(@RequestBody List<${entity}> ${entity.toLowerCase()}s){
-        return ResponseEntity.ok();
+    public ResponseEntity<List<${entity}>> create${entity}Batch(@RequestBody List<${entity}> ${entity.substring(0,1).toLowerCase()}${entity.substring(1,${entity.length()})}s){
+        return ResponseEntity.ok(${table.serviceName.substring(0,1).toLowerCase()}${table.serviceName.substring(1,${table.serviceName.length()})}.create${entity}Batch(${entity.substring(0,1).toLowerCase()}${entity.substring(1,${entity.length()})}s));
     }
 
     @PutMapping()
-    public ResponseEntity<${entity}> update(@RequestBody ${entity} ${entity.toLowerCase()}){
-        return ResponseEntity.ok();
+    public ResponseEntity<${entity}> update${entity}(@RequestBody ${entity} ${entity.substring(0,1).toLowerCase()}${entity.substring(1,${entity.length()})}){
+        return ResponseEntity.ok(${table.serviceName.substring(0,1).toLowerCase()}${table.serviceName.substring(1,${table.serviceName.length()})}.update${entity}(${entity.substring(0,1).toLowerCase()}${entity.substring(1,${entity.length()})}));
     }
 
     @PutMapping("/batch")
-    public ResponseEntity<List<${entity}>> updateBatch(@RequestBody List<${entity}> ${entity.toLowerCase()}s){
-        return ResponseEntity.ok();
+    public ResponseEntity<List<${entity}>> update${entity}Batch(@RequestBody List<${entity}> ${entity.substring(0,1).toLowerCase()}${entity.substring(1,${entity.length()})}s){
+        return ResponseEntity.ok(${table.serviceName.substring(0,1).toLowerCase()}${table.serviceName.substring(1,${table.serviceName.length()})}.update${entity}Batch(${entity.substring(0,1).toLowerCase()}${entity.substring(1,${entity.length()})}s));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity delete (@PathVariable Long id){
-        return ResponseEntity.ok();
+    public ResponseEntity delete${entity}(@PathVariable Long id){
+        ${table.serviceName.substring(0,1).toLowerCase()}${table.serviceName.substring(1,${table.serviceName.length()})}.delete${entity}(id);
+        return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/batch")
-    public ResponseEntity delete (@PathVariable Long id){
-        return ResponseEntity.ok();
+    public ResponseEntity delete${entity}Batch(@RequestBody List<${entity}> ${entity.substring(0,1).toLowerCase()}${entity.substring(1,${entity.length()})}s){
+        ${table.serviceName.substring(0,1).toLowerCase()}${table.serviceName.substring(1,${table.serviceName.length()})}.delete${entity}Batch(${entity.substring(0,1).toLowerCase()}${entity.substring(1,${entity.length()})}s);
+        return ResponseEntity.ok().build();
     }
-    @PostMapping("/query")
-    public ResponseEntity<List<${entity}>> get<${entity}>>ByCond(){
-        return ResponseEntity.ok();
+
+    @GetMapping("/{id}")
+    public ResponseEntity<${entity}> get${entity}ById(@PathVariable Long id) {
+        return ResponseEntity.ok(${table.serviceName.substring(0,1).toLowerCase()}${table.serviceName.substring(1,${table.serviceName.length()})}.selectById(id));
     }
+
+  /*  @GetMapping("/query")
+    public ResponseEntity<List<${entity}>> get${entity}ByCond(
+            @RequestParam(required = false) Boolean isEnabled,
+            @RequestParam(defaultValue = PageUtil.DEFAULT_PAGE) int page,
+            @RequestParam(defaultValue = PageUtil.DEFAULT_SIZE) int size) throws URISyntaxException{
+            List<${entity}> list = ${table.serviceName.substring(0,1).toLowerCase()}${table.serviceName.substring(1,${table.serviceName.length()})}.get${entity}ByCond(isEnabled,page,size);
+        Page pages = PageUtil.getPage(PageHelper.getPagination(), list);
+        HttpHeaders httpHeaders = PaginationUtil.generatePaginationHttpHeaders(pages, "/api/budget/coding/rule/objects/query");
+        return new ResponseEntity(list, httpHeaders, HttpStatus.OK);
+    }*/
 }

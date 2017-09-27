@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.CshBankAccountMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.example.demo.entity.CshBankAccount">
+		<id column="id" property="id" />
+		<result column="bank_account_name" property="bankAccountName" />
+		<result column="bank_account_num" property="bankAccountNum" />
+		<result column="bank_branch_id" property="bankBranchId" />
+		<result column="company_id" property="companyId" />
+		<result column="city_name" property="cityName" />
+		<result column="city_code" property="cityCode" />
+		<result column="province_name" property="provinceName" />
+		<result column="province_code" property="provinceCode" />
+		<result column="cash_account_id" property="cashAccountId" />
+		<result column="responsibility_center_id" property="responsibilityCenterId" />
+		<result column="version_number" property="versionNumber" />
+		<result column="is_enabled" property="isEnabled" />
+		<result column="is_deleted" property="isDeleted" />
+		<result column="created_date" property="createdDate" />
+		<result column="created_by" property="createdBy" />
+		<result column="last_updated_date" property="lastUpdatedDate" />
+		<result column="last_updated_by" property="lastUpdatedBy" />
+	</resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, bank_account_name AS bankAccountName, bank_account_num AS bankAccountNum, bank_branch_id AS bankBranchId, company_id AS companyId, city_name AS cityName, city_code AS cityCode, province_name AS provinceName, province_code AS provinceCode, cash_account_id AS cashAccountId, responsibility_center_id AS responsibilityCenterId, version_number AS versionNumber, is_enabled AS isEnabled, is_deleted AS isDeleted, created_date AS createdDate, created_by AS createdBy, last_updated_date AS lastUpdatedDate, last_updated_by AS lastUpdatedBy
+    </sql>
+
+</mapper>

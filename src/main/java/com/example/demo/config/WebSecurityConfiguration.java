@@ -1,6 +1,7 @@
 package com.example.demo.config;
 
 import com.example.demo.security.CustomUserService;
+import com.helioscloud.atlantis.annotation.EnableMyBatis;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -11,6 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 @Configuration
+@EnableMyBatis
 @EnableGlobalMethodSecurity(prePostEnabled = true) //Spring Security会启用方法权限控制
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 

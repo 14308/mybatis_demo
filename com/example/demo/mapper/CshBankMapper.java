@@ -1,4 +1,4 @@
-package ${package.Mapper};
+package com.example.demo.mapper;
 
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.cloudhelios.atlantis.budget.domain.*;
@@ -6,10 +6,10 @@ import com.baomidou.mybatisplus.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
-import ${superMapperClassPackage};
+import com.baomidou.mybatisplus.mapper.BaseMapper;
 
 /**
- * @author ${author} on ${date}
+ * @author dong.liu on 2017-09-05
  */
-public interface ${table.mapperName} extends ${superMapperClass}<${entity}> {
+public interface CshBankMapper extends BaseMapper<CshBank> {
 }

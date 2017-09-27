@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cloudhelios.atlantis.budget.persistence.CshBankMapper">
+
+                <!-- 通用查询映射结果 -->
+        <resultMap id="BaseResultMap" type="com.cloudhelios.atlantis.budget.domain.CshBank">
+                                                <id column="id" property="id" />
+                                                                                                                                                                                                                                                                                                                                                                                                            <result column="bank_code" property="bankCode" />
+                                                                <result column="bank_name" property="bankName" />
+                                                                <result column="bank_short_name" property="bankShortName" />
+                                                                <result column="bank_type" property="bankType" />
+                                                                <result column="is_enabled" property="isEnabled" />
+                                                                <result column="is_deleted" property="isDeleted" />
+                                                                <result column="created_date" property="createdDate" />
+                                                                <result column="created_by" property="createdBy" />
+                                                                <result column="last_updated_date" property="lastUpdatedDate" />
+                                                                <result column="last_updated_by" property="lastUpdatedBy" />
+                                    </resultMap>
+
+        <!-- 通用分页查询 -->
+    <select id="getCshBankByCond" parameterType="com.cloudhelios.atlantis.budget.domain.CshBank" resultMap="BaseResultMap">
+        select
+                                    id
+                                                                                                                                                                                                                                                                                            ,bank_code
+                                                ,bank_name
+                                                ,bank_short_name
+                                                ,bank_type
+                                                ,is_enabled
+                                                ,is_deleted
+                                                ,created_date
+                                                ,created_by
+                                                ,last_updated_date
+                                                ,last_updated_by
+                            from csh_bank
+        <where>
+            ${ew.sqlSegment}
+        </where>
+    </select>
+</mapper>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.BudgetCodingRuleDetailMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.example.demo.entity.BudgetCodingRuleDetail">
+		<id column="id" property="id" />
+		<result column="coding_rule_id" property="codingRuleId" />
+		<result column="sequence" property="sequence" />
+		<result column="segment_type" property="segmentType" />
+		<result column="segment_value" property="segmentValue" />
+		<result column="date_format" property="dateFormat" />
+		<result column="length" property="length" />
+		<result column="incremental" property="incremental" />
+		<result column="start_value" property="startValue" />
+		<result column="version_number" property="versionNumber" />
+		<result column="is_enabled" property="isEnabled" />
+		<result column="is_deleted" property="isDeleted" />
+		<result column="created_date" property="createdDate" />
+		<result column="created_by" property="createdBy" />
+		<result column="last_updated_date" property="lastUpdatedDate" />
+		<result column="last_updated_by" property="lastUpdatedBy" />
+	</resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, coding_rule_id AS codingRuleId, sequence, segment_type AS segmentType, segment_value AS segmentValue, date_format AS dateFormat, length, incremental, start_value AS startValue, version_number AS versionNumber, is_enabled AS isEnabled, is_deleted AS isDeleted, created_date AS createdDate, created_by AS createdBy, last_updated_date AS lastUpdatedDate, last_updated_by AS lastUpdatedBy
+    </sql>
+
+</mapper>

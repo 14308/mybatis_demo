@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cloudhelios.atlantis.budget.persistence.CshBankAccountAuthMapper">
+
+                <!-- 通用查询映射结果 -->
+        <resultMap id="BaseResultMap" type="com.cloudhelios.atlantis.budget.domain.CshBankAccountAuth">
+                                                <id column="id" property="id" />
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <result column="bank_account_id" property="bankAccountId" />
+                                                                <result column="company_id" property="companyId" />
+                                                                <result column="unit_id" property="unitId" />
+                                                                <result column="job_id" property="jobId" />
+                                                                <result column="employee_id" property="employeeId" />
+                                                                <result column="date_from" property="dateFrom" />
+                                                                <result column="date_to" property="dateTo" />
+                                                                <result column="province_code" property="provinceCode" />
+                                                                <result column="version_number" property="versionNumber" />
+                                                                <result column="is_enabled" property="isEnabled" />
+                                                                <result column="is_deleted" property="isDeleted" />
+                                                                <result column="created_date" property="createdDate" />
+                                                                <result column="created_by" property="createdBy" />
+                                                                <result column="last_updated_date" property="lastUpdatedDate" />
+                                                                <result column="last_updated_by" property="lastUpdatedBy" />
+                                    </resultMap>
+
+        <!-- 通用分页查询 -->
+    <select id="getCshBankAccountAuthByCond" parameterType="com.cloudhelios.atlantis.budget.domain.CshBankAccountAuth" resultMap="BaseResultMap">
+        select
+                                    id
+                                                                                                                                                                                                                                                                                                                                                                                                ,bank_account_id
+                                                ,company_id
+                                                ,unit_id
+                                                ,job_id
+                                                ,employee_id
+                                                ,date_from
+                                                ,date_to
+                                                ,province_code
+                                                ,version_number
+                                                ,is_enabled
+                                                ,is_deleted
+                                                ,created_date
+                                                ,created_by
+                                                ,last_updated_date
+                                                ,last_updated_by
+                            from csh_bank_account_auth
+        <where>
+            ${ew.sqlSegment}
+        </where>
+    </select>
+</mapper>

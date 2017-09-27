@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.BudgetCodingRuleValueMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.example.demo.entity.BudgetCodingRuleValue">
+		<id column="id" property="id" />
+		<result column="coding_rule_id" property="codingRuleId" />
+		<result column="document_category_code" property="documentCategoryCode" />
+		<result column="document_type_code" property="documentTypeCode" />
+		<result column="company_code" property="companyCode" />
+		<result column="month_current_value" property="monthCurrentValue" />
+		<result column="year_current_value" property="yearCurrentValue" />
+		<result column="never_current_value" property="neverCurrentValue" />
+		<result column="period_name" property="periodName" />
+		<result column="version_number" property="versionNumber" />
+		<result column="is_enabled" property="isEnabled" />
+		<result column="is_deleted" property="isDeleted" />
+		<result column="created_date" property="createdDate" />
+		<result column="created_by" property="createdBy" />
+		<result column="last_updated_date" property="lastUpdatedDate" />
+		<result column="last_updated_by" property="lastUpdatedBy" />
+	</resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, coding_rule_id AS codingRuleId, document_category_code AS documentCategoryCode, document_type_code AS documentTypeCode, company_code AS companyCode, month_current_value AS monthCurrentValue, year_current_value AS yearCurrentValue, never_current_value AS neverCurrentValue, period_name AS periodName, version_number AS versionNumber, is_enabled AS isEnabled, is_deleted AS isDeleted, created_date AS createdDate, created_by AS createdBy, last_updated_date AS lastUpdatedDate, last_updated_by AS lastUpdatedBy
+    </sql>
+
+</mapper>

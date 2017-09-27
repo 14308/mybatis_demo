@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.BudgetControlStrategyDetailMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.example.demo.entity.BudgetControlStrategyDetail">
+		<id column="id" property="id" />
+		<result column="control_strategy_id" property="controlStrategyId" />
+		<result column="detail _sequence" property="detail Sequence" />
+		<result column="detail_code" property="detailCode" />
+		<result column="detail_name" property="detailName" />
+		<result column="control_method" property="controlMethod" />
+		<result column="message_code" property="messageCode" />
+		<result column="exp_wf_event" property="expWfEvent" />
+		<result column="version_number" property="versionNumber" />
+		<result column="is_enabled" property="isEnabled" />
+		<result column="is_deleted" property="isDeleted" />
+		<result column="created_date" property="createdDate" />
+		<result column="created_by" property="createdBy" />
+		<result column="last_updated_date" property="lastUpdatedDate" />
+		<result column="last_updated_by" property="lastUpdatedBy" />
+	</resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, control_strategy_id AS controlStrategyId, detail _sequence AS detail Sequence, detail_code AS detailCode, detail_name AS detailName, control_method AS controlMethod, message_code AS messageCode, exp_wf_event AS expWfEvent, version_number AS versionNumber, is_enabled AS isEnabled, is_deleted AS isDeleted, created_date AS createdDate, created_by AS createdBy, last_updated_date AS lastUpdatedDate, last_updated_by AS lastUpdatedBy
+    </sql>
+
+</mapper>

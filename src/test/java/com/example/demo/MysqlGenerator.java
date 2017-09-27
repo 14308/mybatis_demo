@@ -182,9 +182,9 @@ public class MysqlGenerator {
 
                         .setUsername("root")
 
-                        .setPassword("root")
+                        .setPassword("handhand")
 
-                        .setUrl("jdbc:mysql://localhost:3306/hap_cloud_test")
+                        .setUrl("jdbc:mysql://localhost:3306/demo")
 
         ).setStrategy(
 
@@ -194,7 +194,7 @@ public class MysqlGenerator {
                         // .setCapitalMode(true)// 全局大写命名
                         .setEntityBuilderModel(true)
                         // .setDbColumnUnderline(true)//全局下划线命名
-                        .setTablePrefix(new String[]{"bgt"})// 此处可以修改为您的表前缀
+                        .setTablePrefix(new String[]{""})// 此处可以修改为您的表前缀
                         .setEntityLombokModel(true)
                         .setNaming(NamingStrategy.underline_to_camel)// 表名生成策略
                         // .setInclude(new String[] { "user" }) // 需要生成的表
@@ -203,7 +203,7 @@ public class MysqlGenerator {
 
                         // 自定义实体父类
 
-//                         .setSuperEntityClass("com.example.demo.domain.TestEntity")
+                         .setSuperEntityClass("com.helioscloud.atlantis.domain.DomainObject")
 
                         // 自定义实体，公共字段
 
@@ -311,7 +311,7 @@ public class MysqlGenerator {
 
                  .setMapper("/template/mapper.java.vm")
 
-                // .setXml("...");
+                 .setXml("/template/mapper.xml.vm")
 
                  .setService("/template/service.java.vm")
 
